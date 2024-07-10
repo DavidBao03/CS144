@@ -2,7 +2,6 @@
 #include "byte_stream_test_harness.hh"
 
 #include <exception>
-#include <iostream>
 
 using namespace std;
 
@@ -11,7 +10,6 @@ int main()
   try {
     {
       ByteStreamTestHarness test { "overwrite", 2 };
-
       test.execute( Push { "cat" } );
       test.execute( IsClosed { false } );
       test.execute( BufferEmpty { false } );
@@ -22,8 +20,8 @@ int main()
       test.execute( BytesBuffered { 2 } );
       test.execute( Peek { "ca" } );
 
+    
       test.execute( Push { "t" } );
-
       test.execute( IsClosed { false } );
       test.execute( BufferEmpty { false } );
       test.execute( IsFinished { false } );
@@ -34,7 +32,7 @@ int main()
       test.execute( Peek { "ca" } );
     }
 
-    {
+    {  
       ByteStreamTestHarness test { "overwrite-clear-overwrite", 2 };
 
       test.execute( Push { "cat" } );
